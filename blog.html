@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="style.css" /> 
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg bg-body shadow-sm py-3">
+  <div class="container">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item"><a href="index.html" class="nav-link text-secondary fs-5 mx-2">Home</a></li>
+        <li class="nav-item"><a href="blog.html" class="nav-link text-primary fs-5 fw-semibold mx-2">Blog</a></li>
+        <li class="nav-item"><a href="about.html" class="nav-link text-secondary fs-5 mx-2">About Me</a></li>
+        <li class="nav-item"><a href="resume.html" class="nav-link text-secondary fs-5 mx-2">Resume</a></li>
+        <li class="nav-item"><a href="project.html" class="nav-link text-secondary fs-5 mx-2">Project</a></li>
+        <li class="nav-item"><a href="gallary.html" class="nav-link text-secondary fs-5 mx-2">Gallery</a></li>
+        <li class="nav-item"><a href="contact.html" class="nav-link text-secondary fs-5 mx-2">Contact</a></li>
+      </ul>
+      <button id="theme-toggle" class="btn btn-light border-0 ms-lg-3 mt-2 mt-lg-0">
+        <i id="theme-icon" class="bi bi-moon-fill fs-4"></i>
+      </button>
+    </div>
+  </div>
+  </nav>
+
+  <div class="offcanvas offcanvas-start" tabindex="-1" id="sidebarMenu">
+    <div class="offcanvas-header">
+      <h5 class="offcanvas-title">Categories</h5>
+      <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+    </div>
+    <div class="offcanvas-body">
+      <ul class="nav flex-column">
+        <li class="nav-item mb-2">
+          <button class="btn btn-outline-primary w-100" id="btnFaqMobile">FAQs</button>
+        </li>
+        <li class="nav-item">
+          <button class="btn btn-outline-success w-100" id="btnTopicMobile">Topics</button>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Main Section -->
+  <div class="container-box my-4">
+    <div class="row">
+      <!-- Sidebar for large screens -->
+      <div class="col-lg-3 d-none d-lg-block border-end pe-3">
+        <h5 class="fw-bold mb-3">Categories</h5>
+        <ul class="nav flex-column">
+          <li class="nav-item mb-2">
+            <button class="btn btn-outline-primary w-100" id="btnFaq">FAQs</button>
+          </li>
+          <li class="nav-item">
+            <button class="btn btn-outline-success w-100" id="btnTopic">Topics</button>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Content Area -->
+      <div class="col-lg-9 mt-3 mt-lg-0" id="content">
+
+        <!-- FAQs Section -->
+        <div id="faqContent">
+          <h2 class="text-primary">Frequently Asked Questions</h2>
+          <div class="accordion" id="faqAccordion">
+
+            <!-- TODO: Replace these FAQs with your own questions and answers -->
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="headingOne">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne">
+                  What is your most used programming language?
+                </button>
+              </h2>
+              <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
+                <div class="accordion-body">
+                  I enjoy using Python for data analysis and React for web development.
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="headingTwo">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo">
+                  What's your setup?
+                </button>
+              </h2>
+              <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                <div class="accordion-body">
+                  <ul>
+                    <li>Laptop: [Your Laptop Model]</li>
+                    <li>External Monitor: [Your Monitor]</li>
+                    <li>Keyboard: [Your Keyboard]</li>
+                    <li>Mouse: [Your Mouse]</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="headingThree">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree">
+                  What are your hobbies?
+                </button>
+              </h2>
+              <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                <div class="accordion-body">
+                  Add your hobbies and interests here!
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Topics Section -->
+        <div id="topicContent" class="d-none">
+          <h2 class="text-primary">Topics & Articles</h2>
+          <!-- TODO: Add your blog topics and articles here -->
+          <div class="mb-4">
+            <h3>Topic 1: Web Development</h3>
+            <p>Write about your web development journey, projects, or tips...</p>
+          </div>
+
+          <div class="mb-4">
+            <h3>Topic 2: Learning Programming</h3>
+            <p>Share your experiences learning programming languages...</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  
+   <footer>
+    <div class="footer mt-4 mb-4 text-center">
+      <!-- TODO: Replace with your name -->
+      <p>&copy; 2025 Your Name. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    const faqBtn = document.getElementById("btnFaq");
+    const topicBtn = document.getElementById("btnTopic");
+    const faqMobile = document.getElementById("btnFaqMobile");
+    const topicMobile = document.getElementById("btnTopicMobile");
+    const faqContent = document.getElementById("faqContent");
+    const topicContent = document.getElementById("topicContent");
+    const sidebarMenu = document.getElementById("sidebarMenu");
+
+    function showFaq() {
+      faqContent.classList.remove("d-none");
+      topicContent.classList.add("d-none");
+      bootstrap.Offcanvas.getInstance(sidebarMenu)?.hide();
+    }
+
+    function showTopic() {
+      faqContent.classList.add("d-none");
+      topicContent.classList.remove("d-none");
+      bootstrap.Offcanvas.getInstance(sidebarMenu)?.hide();
+    }
+
+    faqBtn?.addEventListener("click", showFaq);
+    topicBtn?.addEventListener("click", showTopic);
+    faqMobile?.addEventListener("click", showFaq);
+    topicMobile?.addEventListener("click", showTopic);
+
+    // Theme toggle logic
+    const toggle = document.getElementById("theme-toggle");
+    const icon = document.getElementById("theme-icon");
+
+    if (localStorage.getItem("theme") === "dark") {
+      document.body.classList.add("dark-mode");
+      icon.classList.replace("bi-moon-fill", "bi-sun-fill");
+    }
+
+    toggle.addEventListener("click", () => {
+      document.body.classList.toggle("dark-mode");
+      const dark = document.body.classList.contains("dark-mode");
+      icon.classList.replace(dark ? "bi-moon-fill" : "bi-sun-fill", dark ? "bi-sun-fill" : "bi-moon-fill");
+      localStorage.setItem("theme", dark ? "dark" : "light");
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact Me</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .item-center {
+      display: flex;
+      justify-content: center;
+      margin-top: 1rem;
+    }
+  </style>
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg bg-body shadow-sm py-3">
+  <div class="container">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item"><a href="index.html" class="nav-link text-secondary fs-5 mx-2">Home</a></li>
+        <li class="nav-item"><a href="blog.html" class="nav-link text-secondary fs-5 mx-2">Blog</a></li>
+        <li class="nav-item"><a href="about.html" class="nav-link text-secondary fs-5 mx-2">About Me</a></li>
+        <li class="nav-item"><a href="resume.html" class="nav-link text-secondary fs-5 mx-2">Resume</a></li>
+        <li class="nav-item"><a href="project.html" class="nav-link text-secondary fs-5 mx-2">Project</a></li>
+        <li class="nav-item"><a href="gallary.html" class="nav-link text-secondary fs-5 mx-2">Gallery</a></li>
+        <li class="nav-item"><a href="contact.html" class="nav-link text-primary fs-5 fw-semibold mx-2">Contact</a></li>
+      </ul>
+      <button id="theme-toggle" class="btn btn-light border-0 ms-lg-3 mt-2 mt-lg-0">
+        <i id="theme-icon" class="bi bi-moon-fill fs-4"></i>
+      </button>
+    </div>
+  </div>
+  </nav>
+  <main>
+    <div class="container-box text-center" id="contact">
+      <h2 class="mb-4 text-primary fw-semibold">Get in Touch!</h2>
+      <p class="mb-4">
+        I'd love to hear from you! Whether it's a project, collaboration, or just to say hi —
+        feel free to reach out through any platform below.
+      </p>
+
+      <div class="d-flex justify-content-center gap-5 mt-3 flex-wrap">
+        <!-- TODO: Replace these links with your actual social media profiles and email -->
+        <a href="mailto:youremail@gmail.com" class="text-danger fs-1" title="Email">
+          <i class="bi bi-envelope-fill"></i>
+        </a>
+        <a href="https://www.facebook.com/yourprofile" target="_blank" class="text-primary fs-1" title="Facebook">
+          <i class="bi bi-facebook"></i>
+        </a>
+        <a href="https://github.com/yourusername" target="_blank" class="text-dark fs-1" title="GitHub">
+          <i class="bi bi-github"></i>
+        </a>
+      </div>
+    </div>
+
+    <form action="">
+      <div class="container-box mt-5" id="message-form">
+        <h2 class="mb-4 text-primary fw-semibold text-center">Contact Form</h2>
+        <form>
+          <p class="mb-4 text-center">Fill out the form below to get in touch with me!</p>
+          <div class="mb-3">
+            <label for="name" class="form-label">Name</label>
+            <input type="text" class="form-control" id="name" placeholder="Your name" required />
+          </div>
+          <div class="mb-3">
+            <label for="email" class="form-label">Email address</label>
+            <input type="email" class="form-control" id="email" placeholder="Your email" required />
+          </div>
+          <div class="mb-3">
+            <label for="message" class="form-label">Message</label>
+            <textarea class="form-control" id="message" rows="4" placeholder="Your message..." required></textarea>
+          </div>
+          <div class="mb-3">
+             <label for="topics">Topics of Interest:</label>
+              <select id="topics" name="topics">
+                <optgroup label="Web Development">
+                  <option>HTML</option><option>CSS</option><option>JavaScript</option>
+                </optgroup>
+                <optgroup label="Data Science">
+                  <option>Python</option><option>Machine Learning</option>
+                </optgroup>
+                <optgroup label="Other">
+                  <option>General Inquiry</option><option>Collaboration</option>
+                </optgroup>
+              </select>
+          </div>
+         <div class="item-center mt-3">
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+        </form>
+      </div>
+    </form>
+  </main>
+
+
+  <footer>
+    <div class="footer mt-4 mb-4">
+      <!-- TODO: Replace with your name -->
+      <p>&copy; 2025 Your Name. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script>
+    const toggle = document.getElementById('theme-toggle');
+    const icon = document.getElementById('theme-icon');
+    if (localStorage.getItem('theme') === 'dark') {
+      document.body.classList.add('dark-mode');
+      icon.classList.replace('bi-moon-fill', 'bi-sun-fill');
+    }
+
+    toggle.addEventListener('click', () => {
+      document.body.classList.toggle('dark-mode');
+      const dark = document.body.classList.contains('dark-mode');
+      icon.classList.replace(dark ? 'bi-moon-fill' : 'bi-sun-fill', dark ? 'bi-sun-fill' : 'bi-moon-fill');
+      localStorage.setItem('theme', dark ? 'dark' : 'light');
+    });
+  </script>
+</body>
+</html>
