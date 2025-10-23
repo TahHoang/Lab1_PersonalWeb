@@ -3,52 +3,404 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script> 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
-    <title>Front Page</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <title>Photography Portfolio</title>
     <style>
-    body {
-    display: flex;
-    justify-content: center;
-    align-items: center;      
-    min-height: 100vh;        
-    background-color: #ffffff;
-    /* TODO: Replace 'index_bg.png' with your own background image */
-    background-image: url('public/index_bg.png');
-    background-size: cover;    
-    background-repeat: no-repeat; 
-    background-position: center;  
-    background-attachment: fixed; 
-    margin: 0; 
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
     }
 
-    .container {
-    background-color: white;
-    width: 65%;
-    border: 1px solid black;
-    padding: 10px 20px;
-    box-sizing: border-box;
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #0a0a0a;
+      color: #ffffff;
+      overflow-x: hidden;
+    }
+
+    /* Navigation */
+    .navbar-photographer {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      padding: 20px 50px;
+      background: rgba(10, 10, 10, 0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      transition: all 0.3s ease;
+    }
+
+    .navbar-photographer.scrolled {
+      padding: 15px 50px;
+      background: rgba(10, 10, 10, 0.98);
+    }
+
+    .nav-brand {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #ffffff;
+      text-decoration: none;
+      letter-spacing: 2px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 40px;
+      list-style: none;
+      align-items: center;
+    }
+
+    .nav-links a {
+      color: #ffffff;
+      text-decoration: none;
+      font-size: 0.95rem;
+      font-weight: 400;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 0;
+      height: 1px;
+      background: #ffffff;
+      transition: width 0.3s ease;
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    /* Hero Section */
+    .hero-section {
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+      /* TODO: Replace 'index_bg.png' with your hero image */
+      background-image: url('public/index_bg.png');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+    }
+
+    .hero-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.6);
+      z-index: 1;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      max-width: 900px;
+      padding: 0 20px;
+      animation: fadeInUp 1s ease-out;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(40px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .hero-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 6rem;
+      font-weight: 900;
+      color: #ffffff;
+      margin-bottom: 20px;
+      line-height: 1.1;
+      letter-spacing: -2px;
+      text-transform: uppercase;
+    }
+
+    .hero-subtitle {
+      font-size: 1.3rem;
+      color: rgba(255, 255, 255, 0.8);
+      font-weight: 300;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      margin-bottom: 50px;
+    }
+
+    .hero-cta {
+      display: inline-block;
+      padding: 18px 50px;
+      background: transparent;
+      border: 2px solid #ffffff;
+      color: #ffffff;
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      transition: all 0.4s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-cta::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: #ffffff;
+      transition: left 0.4s ease;
+      z-index: -1;
+    }
+
+    .hero-cta:hover {
+      color: #0a0a0a;
+    }
+
+    .hero-cta:hover::before {
+      left: 0;
+    }
+
+    /* Scroll Indicator */
+    .scroll-indicator {
+      position: absolute;
+      bottom: 40px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 2;
+      animation: bounce 2s infinite;
+    }
+
+    @keyframes bounce {
+      0%, 20%, 50%, 80%, 100% {
+        transform: translateX(-50%) translateY(0);
+      }
+      40% {
+        transform: translateX(-50%) translateY(-10px);
+      }
+      60% {
+        transform: translateX(-50%) translateY(-5px);
+      }
+    }
+
+    .scroll-indicator i {
+      font-size: 2rem;
+      color: rgba(255, 255, 255, 0.7);
+    }
+
+    /* Quick Links Section */
+    .quick-links {
+      background: #0a0a0a;
+      padding: 80px 0;
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 3rem;
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 60px;
+      letter-spacing: -1px;
+    }
+
+    .link-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    .link-card {
+      background: #1a1a1a;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 50px 30px;
+      text-align: center;
+      transition: all 0.4s ease;
+      position: relative;
+      overflow: hidden;
+      text-decoration: none;
+      color: #ffffff;
+    }
+
+    .link-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 0;
+      background: rgba(255, 255, 255, 0.05);
+      transition: height 0.4s ease;
+    }
+
+    .link-card:hover {
+      transform: translateY(-10px);
+      border-color: rgba(255, 255, 255, 0.3);
+      color: #ffffff;
+    }
+
+    .link-card:hover::before {
+      height: 100%;
+    }
+
+    .link-card i {
+      font-size: 3rem;
+      margin-bottom: 20px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .link-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin-bottom: 10px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .link-card p {
+      font-size: 0.9rem;
+      color: rgba(255, 255, 255, 0.6);
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Mobile Responsive */
+    @media (max-width: 768px) {
+      .navbar-photographer {
+        padding: 15px 20px;
+      }
+
+      .nav-links {
+        gap: 20px;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      .hero-title {
+        font-size: 3rem;
+      }
+
+      .hero-subtitle {
+        font-size: 1rem;
+      }
+
+      .link-grid {
+        grid-template-columns: 1fr;
+      }
     }
     </style>
 </head>
 <body>
-    <div class="container">
-        <header class="text-center mb-4 mt-5">
-            <!-- TODO: Replace with your own name -->
-            <h1>hi!<span class="text-primary mt-3"> I'm [Your Name]</span></h1>
-            <p class="font-italic">A personal website for educational purpose</p>
-        </header>
-        <main>
-            <div class="text-center mb-4">
-                <a href="blog.html" class="btn btn-primary btn-lg mr-2">Blog</a>
-                <a href="about.html" class="btn btn-secondary btn-lg mr-2">About Me</a>
-                <a href="resume.html" class="btn btn-secondary btn-lg mr-2">Resume</a>
-                <a href="project.html" class="btn btn-secondary btn-lg mr-2">Project</a>
-                <a href="gallary.html" class="btn btn-secondary btn-lg mr-2">Gallery</a>
-                <a href="contact.html" class="btn btn-secondary btn-lg">Contact</a>
-            </div>   
-    </div>
+    <!-- Navigation -->
+    <nav class="navbar-photographer">
+      <div class="container-fluid d-flex justify-content-between align-items-center">
+        <!-- TODO: Replace with your name -->
+        <a href="index.html" class="nav-brand">[YOUR NAME]</a>
+        <ul class="nav-links mb-0">
+          <li><a href="about.html">About</a></li>
+          <li><a href="gallary.html">Gallery</a></li>
+          <li><a href="project.html">Projects</a></li>
+          <li><a href="blog.html">Journal</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+      <div class="hero-overlay"></div>
+      <div class="hero-content">
+        <!-- TODO: Replace with your name and title -->
+        <h1 class="hero-title">Your Name</h1>
+        <p class="hero-subtitle">Photographer & Visual Artist</p>
+        <a href="gallary.html" class="hero-cta">View Portfolio</a>
+      </div>
+      <div class="scroll-indicator">
+        <i class="bi bi-chevron-down"></i>
+      </div>
+    </section>
+
+    <!-- Quick Links Section -->
+    <section class="quick-links">
+      <h2 class="section-title">Explore</h2>
+      <div class="link-grid">
+        <a href="gallary.html" class="link-card">
+          <i class="bi bi-images"></i>
+          <h3>Gallery</h3>
+          <p>Browse my latest photography work</p>
+        </a>
+        <a href="about.html" class="link-card">
+          <i class="bi bi-person-circle"></i>
+          <h3>About Me</h3>
+          <p>Learn about my journey and passion</p>
+        </a>
+        <a href="project.html" class="link-card">
+          <i class="bi bi-briefcase"></i>
+          <h3>Projects</h3>
+          <p>Featured photography projects</p>
+        </a>
+        <a href="blog.html" class="link-card">
+          <i class="bi bi-journal-text"></i>
+          <h3>Journal</h3>
+          <p>Stories behind the lens</p>
+        </a>
+        <a href="resume.html" class="link-card">
+          <i class="bi bi-file-text"></i>
+          <h3>Resume</h3>
+          <p>Professional experience</p>
+        </a>
+        <a href="contact.html" class="link-card">
+          <i class="bi bi-envelope"></i>
+          <h3>Get in Touch</h3>
+          <p>Let's work together</p>
+        </a>
+      </div>
+    </section>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+      // Navbar scroll effect
+      window.addEventListener('scroll', function() {
+        const navbar = document.querySelector('.navbar-photographer');
+        if (window.scrollY > 50) {
+          navbar.classList.add('scrolled');
+        } else {
+          navbar.classList.remove('scrolled');
+        }
+      });
+
+      // Smooth scroll for scroll indicator
+      document.querySelector('.scroll-indicator').addEventListener('click', function() {
+        document.querySelector('.quick-links').scrollIntoView({ behavior: 'smooth' });
+      });
+    </script>
 </body>
 </html>

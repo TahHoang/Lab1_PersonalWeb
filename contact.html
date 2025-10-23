@@ -3,127 +3,355 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Contact Me</title>
+  <title>Contact - Photography Portfolio</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css" />
   <style>
-    .item-center {
+    body {
+      background: #0a0a0a;
+      color: #ffffff;
+      font-family: 'Inter', sans-serif;
+    }
+
+    .navbar-photographer {
+      background: rgba(10, 10, 10, 0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      padding: 20px 50px;
+    }
+
+    .nav-brand {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #ffffff;
+      text-decoration: none;
+      letter-spacing: 2px;
+    }
+
+    .nav-links {
       display: flex;
+      gap: 40px;
+      list-style: none;
+      align-items: center;
+      margin: 0;
+    }
+
+    .nav-links a {
+      color: #ffffff;
+      text-decoration: none;
+      font-size: 0.95rem;
+      font-weight: 400;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+
+    .nav-links a.active {
+      font-weight: 600;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 0;
+      height: 1px;
+      background: #ffffff;
+      transition: width 0.3s ease;
+    }
+
+    .nav-links a:hover::after,
+    .nav-links a.active::after {
+      width: 100%;
+    }
+
+    .contact-section {
+      max-width: 1000px;
+      margin: 150px auto 100px;
+      padding: 0 20px;
+    }
+
+    .contact-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 5rem;
+      font-weight: 900;
+      text-align: center;
+      margin-bottom: 30px;
+      letter-spacing: -2px;
+    }
+
+    .contact-subtitle {
+      text-align: center;
+      font-size: 1.2rem;
+      color: rgba(255, 255, 255, 0.6);
+      margin-bottom: 80px;
+      letter-spacing: 2px;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 100px;
+      margin-bottom: 100px;
+    }
+
+    .contact-info h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      margin-bottom: 30px;
+      font-weight: 600;
+    }
+
+    .contact-detail {
+      margin-bottom: 25px;
+    }
+
+    .contact-detail strong {
+      display: block;
+      font-size: 0.85rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.5);
+      margin-bottom: 8px;
+    }
+
+    .contact-detail p, .contact-detail a {
+      font-size: 1.1rem;
+      color: #ffffff;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+
+    .contact-detail a:hover {
+      color: rgba(255, 255, 255, 0.7);
+    }
+
+    .social-links {
+      display: flex;
+      gap: 20px;
+      margin-top: 30px;
+    }
+
+    .social-links a {
+      width: 50px;
+      height: 50px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      display: flex;
+      align-items: center;
       justify-content: center;
-      margin-top: 1rem;
+      color: #ffffff;
+      font-size: 1.3rem;
+      transition: all 0.3s ease;
+      text-decoration: none;
+    }
+
+    .social-links a:hover {
+      background: #ffffff;
+      color: #0a0a0a;
+    }
+
+    .contact-form {
+      background: #0f0f0f;
+      padding: 50px;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .form-group {
+      margin-bottom: 30px;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 0.85rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.5);
+      margin-bottom: 12px;
+    }
+
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      width: 100%;
+      background: transparent;
+      border: none;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+      padding: 15px 0;
+      color: #ffffff;
+      font-size: 1rem;
+      font-family: 'Inter', sans-serif;
+      transition: all 0.3s ease;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus,
+    .form-group select:focus {
+      outline: none;
+      border-bottom-color: #ffffff;
+    }
+
+    .form-group textarea {
+      resize: vertical;
+      min-height: 120px;
+    }
+
+    .submit-btn {
+      background: transparent;
+      border: 2px solid #ffffff;
+      color: #ffffff;
+      padding: 18px 60px;
+      font-size: 0.9rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-weight: 600;
+      width: 100%;
+    }
+
+    .submit-btn:hover {
+      background: #ffffff;
+      color: #0a0a0a;
+    }
+
+    @media (max-width: 768px) {
+      .navbar-photographer {
+        padding: 15px 20px;
+      }
+
+      .nav-links {
+        gap: 15px;
+        font-size: 0.85rem;
+      }
+
+      .contact-title {
+        font-size: 3rem;
+      }
+
+      .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 60px;
+      }
+
+      .contact-form {
+        padding: 30px;
+      }
     }
   </style>
 </head>
 
 <body>
-  <nav class="navbar navbar-expand-lg bg-body shadow-sm py-3">
-  <div class="container">
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
-      <ul class="navbar-nav">
-        <li class="nav-item"><a href="index.html" class="nav-link text-secondary fs-5 mx-2">Home</a></li>
-        <li class="nav-item"><a href="blog.html" class="nav-link text-secondary fs-5 mx-2">Blog</a></li>
-        <li class="nav-item"><a href="about.html" class="nav-link text-secondary fs-5 mx-2">About Me</a></li>
-        <li class="nav-item"><a href="resume.html" class="nav-link text-secondary fs-5 mx-2">Resume</a></li>
-        <li class="nav-item"><a href="project.html" class="nav-link text-secondary fs-5 mx-2">Project</a></li>
-        <li class="nav-item"><a href="gallary.html" class="nav-link text-secondary fs-5 mx-2">Gallery</a></li>
-        <li class="nav-item"><a href="contact.html" class="nav-link text-primary fs-5 fw-semibold mx-2">Contact</a></li>
+  <!-- Navigation -->
+  <nav class="navbar-photographer">
+    <div class="container-fluid d-flex justify-content-between align-items-center">
+      <!-- TODO: Replace with your name -->
+      <a href="index.html" class="nav-brand">[YOUR NAME]</a>
+      <ul class="nav-links">
+        <li><a href="about.html">About</a></li>
+        <li><a href="gallary.html">Gallery</a></li>
+        <li><a href="project.html">Projects</a></li>
+        <li><a href="blog.html">Journal</a></li>
+        <li><a href="contact.html" class="active">Contact</a></li>
       </ul>
-      <button id="theme-toggle" class="btn btn-light border-0 ms-lg-3 mt-2 mt-lg-0">
-        <i id="theme-icon" class="bi bi-moon-fill fs-4"></i>
-      </button>
     </div>
-  </div>
   </nav>
-  <main>
-    <div class="container-box text-center" id="contact">
-      <h2 class="mb-4 text-primary fw-semibold">Get in Touch!</h2>
-      <p class="mb-4">
-        I'd love to hear from you! Whether it's a project, collaboration, or just to say hi —
-        feel free to reach out through any platform below.
-      </p>
 
-      <div class="d-flex justify-content-center gap-5 mt-3 flex-wrap">
-        <!-- TODO: Replace these links with your actual social media profiles and email -->
-        <a href="mailto:youremail@gmail.com" class="text-danger fs-1" title="Email">
-          <i class="bi bi-envelope-fill"></i>
-        </a>
-        <a href="https://www.facebook.com/yourprofile" target="_blank" class="text-primary fs-1" title="Facebook">
-          <i class="bi bi-facebook"></i>
-        </a>
-        <a href="https://github.com/yourusername" target="_blank" class="text-dark fs-1" title="GitHub">
-          <i class="bi bi-github"></i>
-        </a>
-      </div>
-    </div>
+  <!-- Contact Section -->
+  <section class="contact-section">
+    <h1 class="contact-title">Let's Connect</h1>
+    <p class="contact-subtitle">Ready to work together or just want to say hello?</p>
 
-    <form action="">
-      <div class="container-box mt-5" id="message-form">
-        <h2 class="mb-4 text-primary fw-semibold text-center">Contact Form</h2>
-        <form>
-          <p class="mb-4 text-center">Fill out the form below to get in touch with me!</p>
-          <div class="mb-3">
-            <label for="name" class="form-label">Name</label>
-            <input type="text" class="form-control" id="name" placeholder="Your name" required />
-          </div>
-          <div class="mb-3">
-            <label for="email" class="form-label">Email address</label>
-            <input type="email" class="form-control" id="email" placeholder="Your email" required />
-          </div>
-          <div class="mb-3">
-            <label for="message" class="form-label">Message</label>
-            <textarea class="form-control" id="message" rows="4" placeholder="Your message..." required></textarea>
-          </div>
-          <div class="mb-3">
-             <label for="topics">Topics of Interest:</label>
-              <select id="topics" name="topics">
-                <optgroup label="Web Development">
-                  <option>HTML</option><option>CSS</option><option>JavaScript</option>
-                </optgroup>
-                <optgroup label="Data Science">
-                  <option>Python</option><option>Machine Learning</option>
-                </optgroup>
-                <optgroup label="Other">
-                  <option>General Inquiry</option><option>Collaboration</option>
-                </optgroup>
-              </select>
-          </div>
-         <div class="item-center mt-3">
-          <button type="submit" class="btn btn-primary">Submit</button>
+    <div class="contact-grid">
+      <!-- Contact Information -->
+      <div class="contact-info">
+        <h3>Get in Touch</h3>
+        
+        <div class="contact-detail">
+          <strong>Email</strong>
+          <!-- TODO: Replace with your email -->
+          <p><a href="mailto:youremail@gmail.com">youremail@gmail.com</a></p>
         </div>
+
+        <div class="contact-detail">
+          <strong>Location</strong>
+          <p>Ho Chi Minh City, Vietnam</p>
+        </div>
+
+        <div class="contact-detail">
+          <strong>Availability</strong>
+          <p>Open for collaborations & projects</p>
+        </div>
+
+        <div class="contact-detail">
+          <strong>Follow</strong>
+          <div class="social-links">
+            <!-- TODO: Replace with your social media -->
+            <a href="https://instagram.com/yourprofile" target="_blank" title="Instagram">
+              <i class="bi bi-instagram"></i>
+            </a>
+            <a href="https://www.facebook.com/yourprofile" target="_blank" title="Facebook">
+              <i class="bi bi-facebook"></i>
+            </a>
+            <a href="https://github.com/yourusername" target="_blank" title="GitHub">
+              <i class="bi bi-github"></i>
+            </a>
+            <a href="https://linkedin.com/in/yourprofile" target="_blank" title="LinkedIn">
+              <i class="bi bi-linkedin"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Contact Form -->
+      <div class="contact-form">
+        <form>
+          <div class="form-group">
+            <label for="name">Your Name</label>
+            <input type="text" id="name" name="name" required>
+          </div>
+
+          <div class="form-group">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" name="email" required>
+          </div>
+
+          <div class="form-group">
+            <label for="subject">Subject</label>
+            <select id="subject" name="subject">
+              <option>Photography Commission</option>
+              <option>Web Development Project</option>
+              <option>Collaboration</option>
+              <option>General Inquiry</option>
+              <option>Other</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" required></textarea>
+          </div>
+
+          <button type="submit" class="submit-btn">Send Message</button>
         </form>
       </div>
-    </form>
-  </main>
-
-
-  <footer>
-    <div class="footer mt-4 mb-4">
-      <!-- TODO: Replace with your name -->
-      <p>&copy; 2025 Your Name. All rights reserved.</p>
     </div>
+  </section>
+
+  <!-- Footer -->
+  <footer style="background: #0a0a0a; padding: 60px 20px; text-align: center; border-top: 1px solid rgba(255, 255, 255, 0.05);">
+    <p style="color: rgba(255, 255, 255, 0.5); font-size: 0.9rem; letter-spacing: 2px;">
+      <!-- TODO: Replace with your name -->
+      &copy; 2025 Your Name. All Rights Reserved.
+    </p>
   </footer>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-
-  <script>
-    const toggle = document.getElementById('theme-toggle');
-    const icon = document.getElementById('theme-icon');
-    if (localStorage.getItem('theme') === 'dark') {
-      document.body.classList.add('dark-mode');
-      icon.classList.replace('bi-moon-fill', 'bi-sun-fill');
-    }
-
-    toggle.addEventListener('click', () => {
-      document.body.classList.toggle('dark-mode');
-      const dark = document.body.classList.contains('dark-mode');
-      icon.classList.replace(dark ? 'bi-moon-fill' : 'bi-sun-fill', dark ? 'bi-sun-fill' : 'bi-moon-fill');
-      localStorage.setItem('theme', dark ? 'dark' : 'light');
-    });
-  </script>
 </body>
 </html>
